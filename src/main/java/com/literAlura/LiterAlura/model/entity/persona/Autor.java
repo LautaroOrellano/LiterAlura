@@ -1,6 +1,6 @@
 package com.literAlura.LiterAlura.model.entity.persona;
 
-import com.literAlura.LiterAlura.model.dto.DatosPersona;
+import com.literAlura.LiterAlura.model.dto.DatosAutor;
 import com.literAlura.LiterAlura.model.entity.libro.Libro;
 import jakarta.persistence.*;
 import java.util.ArrayList;
@@ -8,13 +8,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "personas")
-public class Persona {
+public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @OneToMany(mappedBy = "persona", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "autor", fetch = FetchType.EAGER)
     private List<Libro> libros = new ArrayList<>();
 
     private Integer fechaNacimiento;
@@ -23,17 +23,17 @@ public class Persona {
 
     private String nombre;
 
-    public Persona(DatosPersona persona) {
-        this.fechaFallecimiento = persona.fechaFallecimiento();
-        this.fechaNacimiento = persona.fechaNacimiento();
-        this.nombre = persona.nombre();
+    public Autor(DatosAutor autor) {
+        this.fechaFallecimiento = autor.fechaFallecimiento();
+        this.fechaNacimiento = autor.fechaNacimiento();
+        this.nombre = autor.nombre();
     }
 
     public void setLibros(List<Libro> libros) {
         this.libros = libros;
     }
 
-    public Persona() {}
+    public Autor() {}
 
     public Long getId() {
         return Id;

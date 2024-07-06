@@ -11,7 +11,7 @@ public record DatosLibro(
             String titulo,
 
             @JsonAlias("authors")
-            List<DatosPersona> autores,
+            List<DatosAutor> autores,
 
             @JsonAlias("languages")
             List<String> lenguajes,

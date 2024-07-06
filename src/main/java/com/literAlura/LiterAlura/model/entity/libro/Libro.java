@@ -1,8 +1,8 @@
 package com.literAlura.LiterAlura.model.entity.libro;
 
 import com.literAlura.LiterAlura.model.dto.DatosLibro;
-import com.literAlura.LiterAlura.model.dto.DatosPersona;
-import com.literAlura.LiterAlura.model.entity.persona.Persona;
+import com.literAlura.LiterAlura.model.dto.DatosAutor;
+import com.literAlura.LiterAlura.model.entity.persona.Autor;
 import jakarta.persistence.*;
 
 import java.util.*;
@@ -19,7 +19,7 @@ public class Libro {
     private String titulo;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    private Persona persona;
+    private Autor autor;
 
     private String lenguajes;
 
@@ -29,11 +29,11 @@ public class Libro {
 
     public Libro(DatosLibro datosLibro) {
         this.titulo = datosLibro.titulo();
-        Optional<DatosPersona> persona = datosLibro.autores().stream().findFirst();
-        if (persona.isPresent()) {
-            this.persona = new Persona(persona.get());
+        Optional<DatosAutor> autor = datosLibro.autores().stream().findFirst();
+        if (autor.isPresent()) {
+            this.autor = new Autor(autor.get());
         } else {
-            this.persona = null;
+            this.autor = null;
             System.out.println("No se pudo encontar el autor");
         }
         this.lenguajes = datosLibro.lenguajes().get(0);
@@ -43,8 +43,8 @@ public class Libro {
     public Libro() {
     }
 
-    public void setPersona(Persona autor) {
-        this.persona = autor;
+    public void setAutor(Autor autor) {
+        this.autor = autor;
     }
 
     public Long getId() {
@@ -63,8 +63,8 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public Autor getAutor() {
+        return autor;
     }
 
     public String getLenguajes() {
@@ -83,9 +83,9 @@ public class Libro {
         this.cantidadDescargas = cantidadDescargas;
     }
 
-    public Libro(String titulo, Persona persona, String lenguajes, Integer cantidadDescargas) {
+    public Libro(String titulo, Autor autor, String lenguajes, Integer cantidadDescargas) {
         this.titulo = titulo;
-        this.persona = persona;
+        this.autor = autor;
         this.lenguajes = lenguajes;
         this.cantidadDescargas = cantidadDescargas;
     }
@@ -95,7 +95,7 @@ public class Libro {
         return "Libro{" +
                 "Id=" + Id +
                 ", titulo='" + titulo + '\'' +
-                ", autores=" + persona +
+                ", autores=" + autor +
                 ", lenguajes='" + lenguajes + '\'' +
                 ", cantidadDescargas=" + cantidadDescargas +
                 '}';

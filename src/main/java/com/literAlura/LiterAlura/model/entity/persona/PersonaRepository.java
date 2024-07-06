@@ -5,8 +5,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PersonaRepository extends JpaRepository<Persona, Long> {
-    List<Persona> findByFechaFallecimientoGreaterThan(Integer año);
+public interface PersonaRepository extends JpaRepository<Autor, Long> {
+    List<Autor> findByFechaFallecimientoGreaterThan(Integer año);
 
-    List<Persona> findByNombre(String nombre);
+    List<Autor> findByNombre(String nombre);
 }

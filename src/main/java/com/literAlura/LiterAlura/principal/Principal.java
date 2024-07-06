@@ -4,7 +4,7 @@ import com.literAlura.LiterAlura.model.dto.Datos;
 import com.literAlura.LiterAlura.model.dto.DatosLibro;
 import com.literAlura.LiterAlura.model.entity.libro.Libro;
 import com.literAlura.LiterAlura.model.entity.libro.LibroRepository;
-import com.literAlura.LiterAlura.model.entity.persona.Persona;
+import com.literAlura.LiterAlura.model.entity.persona.Autor;
 import com.literAlura.LiterAlura.model.entity.persona.PersonaRepository;
 import com.literAlura.LiterAlura.service.ConsumoAPI;
 import com.literAlura.LiterAlura.service.ConvierteDatos;
@@ -82,7 +82,7 @@ public class Principal {
     }
 
     private void leerLibro(Libro libro) {
-        String nombrePersona = (libro.getPersona() != null) ? libro.getPersona().getNombre() : "Autor no encontrado";
+        String nombreAutor = (libro.getAutor() != null) ? libro.getAutor().getNombre() : "Autor no encontrado";
         System.out.printf("""
                         ----- LIBRO -----
                         Titulo: %s
@@ -92,24 +92,24 @@ public class Principal {
                         -------------------- \n
                         """,
                 libro.getTitulo(),
-                nombrePersona,
+                nombreAutor,
                 libro.getLenguajes(),
                 libro.getCantidadDescargas()
         );
     }
 
-    private void leerPersona(Persona persona) {
+    private void leerPersona(Autor autor) {
         System.out.printf("""
                         Autor: %s
                         Fecha de nacimiento: %s
                         Fecha de fallecimiento: %s
                         """,
-                persona.getNombre(),
-                persona.getFechaNacimiento(),
-                persona.getFechaFallecimiento()
+                autor.getNombre(),
+                autor.getFechaNacimiento(),
+                autor.getFechaFallecimiento()
         );
 
-        var libros = persona.getLibros().stream()
+        var libros = autor.getLibros().stream()
                 .map(a -> a.getTitulo())
                 .collect(Collectors.toList());
 
@@ -140,7 +140,7 @@ public class Principal {
     }
 
     private void listarAutoresRegistrados() {
-        List<Persona> autores = personaRepository.findAll();
+        List<Autor> autores = personaRepository.findAll();
         autores.stream()
                 .forEach(this::leerPersona);
     }
@@ -148,9 +148,9 @@ public class Principal {
     private void listarAutoresVivosPorAño() {
         System.out.println("Ingresa el año del autor(es) que desea buscar");
         Integer año = scanner.nextInt();
-        List<Persona> autores = personaRepository.findByFechaFallecimientoGreaterThan(año);
+        List<Autor> autores = personaRepository.findByFechaFallecimientoGreaterThan(año);
        if(autores.isEmpty()) {
-           System.out.println("No hay autores registrados");
+           System.out.println("No hay autores registrados con esa fecha");
        } else {
            autores.stream().forEach(this::leerPersona);
        }
