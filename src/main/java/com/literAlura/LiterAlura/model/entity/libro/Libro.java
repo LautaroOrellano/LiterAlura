@@ -2,7 +2,7 @@ package com.literAlura.LiterAlura.model.entity.libro;
 
 import com.literAlura.LiterAlura.model.dto.DatosLibro;
 import com.literAlura.LiterAlura.model.dto.DatosAutor;
-import com.literAlura.LiterAlura.model.entity.persona.Autor;
+import com.literAlura.LiterAlura.model.entity.autor.Autor;
 import jakarta.persistence.*;
 
 import java.util.*;

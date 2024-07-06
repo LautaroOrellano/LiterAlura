@@ -4,8 +4,8 @@ import com.literAlura.LiterAlura.model.dto.Datos;
 import com.literAlura.LiterAlura.model.dto.DatosLibro;
 import com.literAlura.LiterAlura.model.entity.libro.Libro;
 import com.literAlura.LiterAlura.model.entity.libro.LibroRepository;
-import com.literAlura.LiterAlura.model.entity.persona.Autor;
-import com.literAlura.LiterAlura.model.entity.persona.PersonaRepository;
+import com.literAlura.LiterAlura.model.entity.autor.Autor;
+import com.literAlura.LiterAlura.model.entity.autor.AutorRepository;
 import com.literAlura.LiterAlura.service.ConsumoAPI;
 import com.literAlura.LiterAlura.service.ConvierteDatos;
 import java.util.InputMismatchException;
@@ -21,9 +21,9 @@ public class Principal {
     public final String URL_BASE = "https://gutendex.com/books/";
     private ConvierteDatos conversor = new ConvierteDatos();
     private LibroRepository libroRepository;
-    private PersonaRepository personaRepository;
+    private AutorRepository personaRepository;
 
-    public Principal(LibroRepository libroRepository, PersonaRepository personaRepository) {
+    public Principal(LibroRepository libroRepository, AutorRepository personaRepository) {
         this.libroRepository = libroRepository;
         this.personaRepository = personaRepository;
     }

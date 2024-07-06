@@ -1,7 +1,7 @@
 package com.literAlura.LiterAlura;
 
 import com.literAlura.LiterAlura.model.entity.libro.LibroRepository;
-import com.literAlura.LiterAlura.model.entity.persona.PersonaRepository;
+import com.literAlura.LiterAlura.model.entity.autor.AutorRepository;
 import com.literAlura.LiterAlura.principal.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,7 +14,7 @@ public class LiterAluraApplication implements CommandLineRunner {
 	@Autowired
 	LibroRepository libroRepository;
 	@Autowired
-	PersonaRepository personaRepository;
+	AutorRepository personaRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LiterAluraApplication.class, args);

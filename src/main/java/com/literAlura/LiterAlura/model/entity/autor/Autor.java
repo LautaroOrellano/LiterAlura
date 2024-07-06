@@ -1,4 +1,4 @@
-package com.literAlura.LiterAlura.model.entity.persona;
+package com.literAlura.LiterAlura.model.entity.autor;
 
 import com.literAlura.LiterAlura.model.dto.DatosAutor;
 import com.literAlura.LiterAlura.model.entity.libro.Libro;
